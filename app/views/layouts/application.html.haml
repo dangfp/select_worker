@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title SelectWorker
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' =>  true
+    = javascript_include_tag 'application', 'data-turbolinks-track' =>  true
+    = csrf_meta_tags
+  %body
+    %header
+      .container
+        .row
+          = yield
+    %footer
+      .text-center &copy 2015 SelectWorker
