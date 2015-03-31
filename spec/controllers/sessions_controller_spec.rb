@@ -2,9 +2,20 @@ require 'rails_helper'
 
 describe SessionsController do
   describe "GET #new" do
-    it "renders the :new template" do
-      get :new
-      expect(response).to render_template :new
+    context "for the unauthenticated user" do
+      it "renders the :new template" do
+        get :new
+        expect(response).to render_template :new
+      end
+    end
+    
+    context "for the authenticated user" do
+      before { sign_in }
+
+      it "redirects to the root path" do
+        get :new
+        expect(response).to redirect_to root_path
+      end
     end
   end
 
@@ -37,7 +48,7 @@ describe SessionsController do
   end
 
   describe "GET #destroy" do
-    before { session[:user_id] = Fabricate(:user).id }
+    before { sign_in }
 
     it "clears the session for the user" do
       get :destroy

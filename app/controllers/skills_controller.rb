@@ -1,10 +1,19 @@
 class SkillsController < ApplicationController
+  before_action :require_sign_in
+
   def index
     @skills = Skill.all
-    @my_skills = User.first.skills
+    @my_skills = current_user.skills
   end
 
   def update
+    current_user.skills = selected_skills
+    redirect_to root_path
+  end
+
+  private
+
+  def selected_skills
     skills = []
     
     if params[:skills]
@@ -13,9 +22,6 @@ class SkillsController < ApplicationController
         skills << skill
       end
     end
-    
-    current_user = User.first
-    current_user.skills = skills
-    redirect_to root_path
+    skills
   end
 end

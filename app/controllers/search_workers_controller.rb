@@ -1,4 +1,5 @@
 class SearchWorkersController < ApplicationController
+  before_action :require_sign_in, only: [:index, :search]
   before_action :initialize_set
 
   def index
@@ -26,6 +27,6 @@ class SearchWorkersController < ApplicationController
     params[:skills].each do |skill_data|
       skill_ids << skill_data[:id]
     end
-    @match_workers = User.joins(:skills).where(skills: {id: skill_ids}).uniq
+    @match_workers = User.joins(:skills).where(skills: {id: skill_ids}).uniq.where.not(id: current_user.id)
   end
 end
