@@ -35,4 +35,18 @@ describe SessionsController do
       end
     end
   end
+
+  describe "GET #destroy" do
+    before { session[:user_id] = Fabricate(:user).id }
+
+    it "clears the session for the user" do
+      get :destroy
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "redirects to the sign in page" do
+      get :destroy
+      expect(response).to redirect_to(sign_in_path)
+    end
+  end
 end
