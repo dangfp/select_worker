@@ -14,4 +14,6 @@ class User < ActiveRecord::Base
   validates_presence_of :phone
   validates_numericality_of :phone, only_integer: true
   validates_length_of :phone, is: 11
+
+  has_and_belongs_to_many :skills
 end

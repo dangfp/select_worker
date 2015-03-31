@@ -17,4 +17,6 @@ describe User do
   it { should validate_presence_of(:phone) }
   it { should validate_length_of(:phone).is_equal_to(11) }
   it { should validate_numericality_of(:phone).only_integer }
+
+  it { should have_and_belong_to_many(:skills) }
 end
