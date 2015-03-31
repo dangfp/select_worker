@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  root to: 'users#new'
+  root to: 'search_workers#index'
 
-  get '/sign_in',           to: 'sessions#new'
+  get '/sign_up',           to: "users#new"
+  get '/sign_in',           to: "sessions#new"
+  post '/sign_in',          to: 'sessions#create'
   get '/my_skills',         to: "skills#index"
   post '/my_skills/update', to: "skills#update"
   get '/home',              to: "search_workers#index"
   post '/home',             to: "search_workers#search"
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:create]
 end

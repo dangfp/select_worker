@@ -1,0 +1,6 @@
+= bootstrap_form_tag(url: '/sign_in', layout: :horizontal, label_col: 'col-sm-0', control_col: 'col-sm-4 col-sm-offset-4') do |f|
+  %p.text-center.title Sign in
+  = f.email_field :email, hide_label: true, placeholder: 'Email'
+  = f.password_field :password, hide_label: true, placeholder: 'Password'
+  = f.form_group do
+    = f.submit 'Sign in', class: 'btn btn-lg btn-primary btn-block'
