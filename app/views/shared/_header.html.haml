@@ -1,0 +1,21 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button(class='navbar-toggle collapsed' data-gottle='collapse' data-target='#bs-example-navbar-collapse-1')
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .navbar-brand
+        = link_to 'Select worker', root_path
+    -if signed_in?
+      .collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            = link_to '#', class: 'dropdown-toggle', role: 'button', 'data-toggle' => 'dropdown' do
+              %i.glyphicon.glyphicon-user
+              = current_user.full_name
+              %span.caret
+            %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
+              %li
+                = link_to 'sign out', '#'

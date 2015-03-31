@@ -7,8 +7,10 @@
     = csrf_meta_tags
   %body
     %header
+      = render 'shared/header'
       .container
         .row
+          = render 'shared/messages'
           = yield
     %footer
       .text-center &copy 2015 SelectWorker

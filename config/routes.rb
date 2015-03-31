@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get '/sign_up',           to: "users#new"
   get '/sign_in',           to: "sessions#new"
-  post '/sign_in',          to: 'sessions#create'
+  post '/sign_in',          to: "sessions#create"
+  get '/sign_out',          to: "sessions#destroy"
   get '/my_skills',         to: "skills#index"
   post '/my_skills/update', to: "skills#update"
   get '/home',              to: "search_workers#index"
