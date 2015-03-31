@@ -1,0 +1,25 @@
+.page-header
+  .well
+    %h2 Please select skills
+    = form_tag "/home", method: :post do
+      - @skills.each do |skill|
+        = check_box_tag "skills[][id]", skill.id
+        = label_tag skill.name
+      = submit_tag "search"
+- if @match_workers.count > 0
+  .well.well-sm
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th Phone
+      %tbody
+        - @match_workers.each do |worker|
+          %tr
+            %td
+              = worker.full_name
+            %td
+              = worker.email
+            %td
+              = worker.phone
