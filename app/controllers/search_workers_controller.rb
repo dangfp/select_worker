@@ -28,5 +28,6 @@ class SearchWorkersController < ApplicationController
       skill_ids << skill_data[:id]
     end
     @match_workers = User.joins(:skills).where(skills: {id: skill_ids}).uniq.where.not(id: current_user.id)
+    @match_workers = @match_workers.page(params[:page])
   end
 end
