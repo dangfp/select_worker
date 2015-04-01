@@ -8,9 +8,9 @@
         %span.icon-bar
       .navbar-brand
         = link_to 'Select worker', root_path
-    -if signed_in?
-      .collapse.navbar-collapse
-        %ul.nav.navbar-nav.navbar-right
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if signed_in?
           %li.dropdown
             = link_to '#', class: 'dropdown-toggle', role: 'button', 'data-toggle' => 'dropdown' do
               %i.glyphicon.glyphicon-user
@@ -20,3 +20,9 @@
               %li
                 = link_to 'set skills', my_skills_path
                 = link_to 'sign out'  , sign_out_path
+        - else
+          %li
+            = link_to 'Register', sign_up_path
+          %li
+            = link_to 'Sign in',  sign_in_path
+        

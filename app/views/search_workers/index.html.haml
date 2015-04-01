@@ -2,7 +2,7 @@
   %h2 Please select skills
   = form_tag "/", method: :post do
     - @skills.each do |skill|
-      = radio_button_tag "skills[][id]", skill.id
+      = radio_button_tag "skill[id]", skill.id
       = label_tag skill.name
     = submit_tag "search"
 - if @match_workers.count > 0

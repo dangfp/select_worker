@@ -28,9 +28,9 @@ describe SessionsController do
         expect(session[:user_id]).to eq(valid_user.id)
       end
 
-      it "redirects to the home page" do
+      it "redirects to the root path" do
         post :create, email: valid_user.email, password: valid_user.password
-        expect(response).to redirect_to(home_path)
+        expect(response).to redirect_to(root_path)
       end
     end
 

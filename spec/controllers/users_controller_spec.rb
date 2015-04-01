@@ -36,7 +36,7 @@ describe UsersController do
       let(:invalid_user) { Fabricate.attributes_for(:invalid_user) }
 
       it "don't save the new user in the database" do
-        expect{ post :create, user: invalid_user }.to change(User, :count).by(0)
+        expect{ post :create, user: invalid_user }.not_to change(User, :count)
       end
 
       it "re-renders the :new template" do

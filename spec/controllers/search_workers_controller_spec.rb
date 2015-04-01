@@ -50,18 +50,18 @@ describe SearchWorkersController do
 
       context "mahch workers" do
         it "populates an array of workers match search condition" do
-          post :search, skills: [{id: skill1.id}]
+          post :search, skill: {id: skill1.id}
           expect(assigns(:match_workers)).to match_array([worker1, worker2])
         end
 
         it "don't include the customer self when customer have the skills be searched" do
           current_user.skills = [skill1]
-          post :search, skills: [{id: skill1.id}]
+          post :search, skill: {id: skill1.id}
           expect(assigns(:match_workers)).to match_array([worker1, worker2])
         end
 
         it "renders the :index template" do
-          post :search, skills: [{id: skill1.id}]
+          post :search, skill: {id: skill1.id}
           expect(response).to render_template :index
         end
       end

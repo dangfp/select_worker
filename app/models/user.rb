@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   validates_length_of :phone, is: 11
 
   has_and_belongs_to_many :skills
+
+  def set_skills(selected_skills)
+    self.skills = selected_skills
+  end
 end
