@@ -2,6 +2,6 @@
   %h2 Set Skills
   = form_tag "/my_skills/update", method: :post do
     - @skills.each do |skill|
-      = check_box_tag "skills[][id]", skill.id, @my_skills.include?(skill)
+      = check_box_tag "skill_ids[]", skill.id, @my_skills.include?(skill)
       = label_tag skill.name
     = submit_tag "save"

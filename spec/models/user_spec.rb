@@ -19,14 +19,4 @@ describe User do
   it { should validate_numericality_of(:phone).only_integer }
 
   it { should have_and_belong_to_many(:skills) }
-
-  describe "#set_skills" do
-    it "sets skills of the user with selected skills" do
-      user = Fabricate(:user)
-      skill1 = Fabricate(:skill)
-      skill2 = Fabricate(:skill)
-      user.set_skills([skill1, skill2])
-      expect(user.skills).to match_array([skill1, skill2])
-    end
-  end
 end

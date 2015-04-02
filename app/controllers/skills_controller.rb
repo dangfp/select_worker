@@ -7,21 +7,7 @@ class SkillsController < ApplicationController
   end
 
   def update
-    current_user.set_skills(selected_skills)
+    current_user.skill_ids = params[:skill_ids]
     redirect_to root_path
-  end
-
-  private
-
-  def selected_skills
-    reset_skills = []
-    
-    if params[:skills].present?
-      params[:skills].each do |skill_data|
-        skill = Skill.find(skill_data[:id])
-        reset_skills << skill
-      end
-    end
-    reset_skills
   end
 end

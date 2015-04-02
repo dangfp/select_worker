@@ -35,7 +35,7 @@ describe SkillsController do
   describe "POST #update" do
     context "for the unauthenticated user" do
       it_behaves_like "require_signed_in" do
-        let(:action) { post :update, skills: [{id: skill1.id}] }
+        let(:action) { post :update, skill_ids: [skill1.id] }
       end
     end
 
@@ -43,12 +43,12 @@ describe SkillsController do
       before { sign_in }
 
       it "sets one skill for the user in the database" do
-        post :update, skills: [{id: skill1.id}]
+        post :update, skill_ids: [skill1.id]
         expect(current_user.skills).to eq([skill1])
       end
 
       it "sets two skills for the user in the database" do
-        post :update, skills: [{id: skill1.id}, {id: skill2.id}]
+        post :update, skill_ids: [skill1.id, skill2.id]
         expect(current_user.skills).to match_array([skill1, skill2])
       end
 
@@ -58,7 +58,7 @@ describe SkillsController do
       end
 
       it "redirects to the root path" do
-        post :update, skills: [{id: skill1.id}]
+        post :update, skill_ids: [skill1.id]
         expect(response).to redirect_to root_path
       end
     end
